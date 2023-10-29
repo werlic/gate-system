@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <%- include('../../layouts/head') -%>
+  <body class="bg-[#252429] text-[#dadcdd]">
+    <%- include('../../components/sidebar') -%>
+    <div class="pl-32">
+      <!-- Header -->
+      <%- include('../../components/header') -%>
+      <!-- End Header -->
+      <!-- Content -->
+      <main class="p-5 min-h-screen grid grid-cols-2 gap-5">
+        <!-- Grafik -->
+        <div
+          class="p-5 rounded-xl border border-gray-600 h-fit bg-gradient-to-tr from-[#212025] to-[#ffffff15]"
+        >
+          <div class="">
+            <div class="flex justify-between items-center">
+              <p class="font-semibold text-2xl text-white">User Register</p>
+              <select
+                name=""
+                id=""
+                class="bg-transparent rounded-xl border border-gray-600 p-1 text-green-300"
+              >
+                <option value="" class="bg-[#252429] text-[#dadcdd]">
+                  Day
+                </option>
+                <option value="" class="bg-[#252429] text-[#dadcdd]">
+                  Week
+                </option>
+                <option value="" class="bg-[#252429] text-[#dadcdd]">
+                  Month
+                </option>
+              </select>
+            </div>
+            <canvas id="user-register" class="w-full"></canvas>
+          </div>
+        </div>
+        <!-- End Grafik -->
+        <!-- Grafik -->
+        <div
+          class="p-5 rounded-xl border border-gray-600 h-fit bg-gradient-to-tr from-[#212025] to-[#ffffff15]"
+        >
+          <div class="">
+            <div class="flex justify-between items-center">
+              <p class="font-semibold text-2xl text-white">User use gym</p>
+              <select
+                name=""
+                id=""
+                class="bg-transparent rounded-xl border border-gray-600 p-1 text-green-300"
+              >
+                <option value="" class="bg-[#252429] text-[#dadcdd]">
+                  Day
+                </option>
+                <option value="" class="bg-[#252429] text-[#dadcdd]">
+                  Week
+                </option>
+                <option value="" class="bg-[#252429] text-[#dadcdd]">
+                  Month
+                </option>
+              </select>
+            </div>
+            <canvas id="user-use-gym" class="w-full"></canvas>
+          </div>
+        </div>
+        <!-- End Grafik -->
+        <!-- Grafik -->
+        <div
+          class="p-5 col-span-2 rounded-xl border border-gray-600 h-fit bg-gradient-to-tr from-[#212025] to-[#ffffff15]"
+        >
+          <div class="">
+            <div class="flex justify-between items-center">
+              <p class="font-semibold text-2xl text-white">User</p>
+              <select
+                name=""
+                id=""
+                class="bg-transparent rounded-xl border border-gray-600 p-1 text-green-300"
+              >
+                <option value="" class="bg-[#252429] text-[#dadcdd]">
+                  Day
+                </option>
+                <option value="" class="bg-[#252429] text-[#dadcdd]">
+                  Week
+                </option>
+                <option value="" class="bg-[#252429] text-[#dadcdd]">
+                  Month
+                </option>
+              </select>
+            </div>
+            <canvas id="user-register" class="w-full"></canvas>
+          </div>
+        </div>
+        <!-- End Grafik -->
+      </main>
+      <!-- End Content -->
+    </div>
+
+    <!-- Chart -->
+
+    <script>
+      // Data yang akan ditampilkan di grafik
+      const data = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [
+          {
+            label: 'Income',
+            data: [0, 3, 1, 2, 2],
+            backgroundColor: '#16a879',
+            borderColor: '#16a879', // Ubah warna
+            borderWidth: 4,
+          },
+        ],
+      };
+
+      // Konfigurasi grafik
+      const config = {
+        type: 'line',
+        data: data,
+        options: {
+          scales: {
+            x: {
+              grid: {
+                color: '#dadcdd1A',
+              },
+              ticks: {
+                color: '#dadcdd', // Ubah warna label sumbu x disini
+              },
+            },
+            y: {
+              grid: {
+                color: '#dadcdd1A',
+              },
+              beginAtZero: true,
+              ticks: {
+                color: '#dadcdd', // Ubah warna label sumbu y disini
+              },
+            },
+          },
+        },
+      };
+
+      // Membuat grafik di dalam elemen <canvas>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Data dan konfigurasi grafik
+        // ...
+
+        // Membuat grafik di dalam elemen <canvas>
+        var userRegister = new Chart(
+          document.getElementById('user-register'),
+          config,
+        );
+        var userUseGym = new Chart(
+          document.getElementById('user-use-gym'),
+          config,
+        );
+      });
+    </script>
+    <!-- End Chart -->
+  </body>
+</html>
