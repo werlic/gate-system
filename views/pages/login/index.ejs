@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <%- include('../../layouts/head') -%>
+  <body class="bg-[#252429] text-[#dadcdd]">
+    <section class="min-h-screen flex justify-center items-center">
+      <div class="w-96 bg-[#2a292e] p-5 border border-gray-600 rounded-xl">
+        <div class="bg-[#252429] rounded-xl p-1 mb-5">
+          <h1 class="text-center text-4xl">Gym Gate System</h1>
+        </div>
+        <h1 class="text-center font-semibold text-2xl text-primary mb-5">
+          Sign In
+        </h1>
+        <form action="/login/auth" method="post">
+          <div class="mb-5 flex flex-col gap-3">
+            <label for="email">Email : </label>
+            <input
+              id="email"
+              type="email"
+              class="p-2 bg-[#252429] text-[#dadcdd] rounded-xl"
+              placeholder="Email"
+              required
+              name="username"
+            />
+          </div>
+          <div class="mb-5 flex flex-col gap-3">
+            <label for="">Password : </label>
+            <input
+              type="password"
+              class="p-2 bg-[#252429] text-[#dadcdd] rounded-xl"
+              placeholder="Password"
+              name="password"
+              required
+            />
+          </div>
+          <div class="mb-5">
+            <button
+              class="btn btn-primary bg-primary border-primary border-transparent text-white w-full"
+            >
+              Sign in
+            </button>
+          </div>
+        </form>
+
+        <div class="text-center">
+          <a href="/register">
+            <small>Don't have an account?</small>
+            <span>Sign Up</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <%- include('../../layouts/head') -%>
+  <body class="bg-[#252429] text-[#dadcdd]">
+    <%- include('../../components/sidebar') -%>
+    <div class="pl-32">
+      <!-- Header -->
+      <%- include('../../components/header') -%>
+      <!-- End Header -->
+      <!-- Content -->
+      <main class="p-5 min-h-screen">
+        <div class="mb-5 flex gap-5 justify-end">
+          <input
+            type="text"
+            class="p-2 rounded-xl w-72 bg-[#2a292e] text-[#dadcdd]"
+            placeholder="Search..."
+          />
+          <!-- Modal -->
+          <button class="btn btn-primary" onclick="my_modal_2.showModal()">
+            Add User
+          </button>
+
+          <dialog id="my_modal_2" class="modal">
+            <div class="modal-box bg-[#2a292e]">
+              <form action="">
+                <div class="mb-5 flex flex-col gap-3">
+                  <label for="email">Email : </label>
+                  <input
+                    id="email"
+                    type="text"
+                    class="p-2 bg-[#252429] text-[#dadcdd] rounded-xl"
+                    placeholder="Email"
+                    required
+                  />
+                </div>
+                <div class="mb-5 flex flex-col gap-3">
+                  <label for="">Password : </label>
+                  <input
+                    type="password"
+                    class="p-2 bg-[#252429] text-[#dadcdd] rounded-xl"
+                    placeholder="Password"
+                    required
+                  />
+                </div>
+                <div class="mb-5">
+                  <button
+                    class="btn btn-primary bg-primary border-primary border-transparent text-white w-full"
+                  >
+                    Add
+                  </button>
+                </div>
+              </form>
+            </div>
+            <form method="dialog" class="modal-backdrop">
+              <button>close</button>
+            </form>
+          </dialog>
+          <!-- End Modal -->
+        </div>
+        <div
+          class="border border-gray-600 rounded-xl h-fit pt-5 bg-gradient-to-tr from-[#212025] to-[#ffffff15]"
+        >
+          <div class="px-5 mb-5">
+            <p class="font-semibold text-2xl">Gym User</p>
+          </div>
+          <div>
+            <table class="w-full">
+              <thead class="sticky top-0 bg-[#2a292e]">
+                <tr>
+                  <th class="text-left p-2">Date</th>
+                  <th class="text-left p-2">Name</th>
+                  <th class="text-left p-2">Valid Until</th>
+                  <th class="text-left p-2">Status</th>
+                  <th class="text-left p-2"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-600">
+                  <td class="p-2 w-64">
+                    <p class="font-semibold">20 Dec 2023</p>
+                    <p class="font-semibold text-gray-400">20:34 AM</p>
+                  </td>
+                  <td class="p-2 font-semibold">John Doe</td>
+                  <td class="p-2 font-semibold">20 Dec 2023</td>
+                  <td class="p-2 text-left font-semibold w-56">
+                    <div
+                      class="flex w-32 bg-red-500 justify-center items-center rounded-lg text-white"
+                    >
+                      <p>Non-Active</p>
+                    </div>
+                  </td>
+                  <td class="w-20">
+                    <div class="dropdown dropdown-end">
+                      <label tabindex="0" class="cursor-pointer">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-6 h-6"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
+                          />
+                        </svg>
+                      </label>
+                      <ul
+                        tabindex="0"
+                        class="dropdown-content z-[1] menu p-2 shadow bg-[#2a292e] hover:text-white rounded-box w-52 border border-gray-600"
+                      >
+                        <li>
+                          <a href="/users/1" class="hover:text-white">Detail</a>
+                        </li>
+                        <li><a class="hover:text-white">Edit</a></li>
+                        <li><a class="hover:text-white">Delete</a></li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="border-b border-gray-600">
+                  <td class="p-2 w-64">
+                    <p class="font-semibold">20 Dec 2023</p>
+                    <p class="font-semibold text-gray-400">20:34 AM</p>
+                  </td>
+                  <td class="p-2 font-semibold">John Doe</td>
+                  <td class="p-2 font-semibold">20 Dec 2023</td>
+                  <td class="p-2 text-left text-primary font-semibold w-56">
+                    <div
+                      class="flex w-32 bg-primary justify-center items-center rounded-lg text-white"
+                    >
+                      <p>Active</p>
+                    </div>
+                  </td>
+                  <td class="w-20">
+                    <div class="dropdown dropdown-end">
+                      <label tabindex="1" class="cursor-pointer">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-6 h-6"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
+                          />
+                        </svg>
+                      </label>
+                      <ul
+                        tabindex="1"
+                        class="dropdown-content z-[1] menu p-2 shadow bg-[#2a292e] hover:text-white rounded-box w-52 border border-gray-600"
+                      >
+                        <li>
+                          <a href="/users/2" class="hover:text-white">Detail</a>
+                        </li>
+                        <li><a class="hover:text-white">Edit</a></li>
+                        <li><a class="hover:text-white">Delete</a></li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- Button Pagination -->
+            <div class="flex justify-end p-5">
+              <div class="join">
+                <button
+                  class="join-item bg-transparent border-gray-600 text-white btn"
+                >
+                  Previous
+                </button>
+                <button
+                  class="join-item bg-transparent border-gray-600 text-white btn"
+                >
+                  1
+                </button>
+                <button
+                  class="join-item bg-transparent border-gray-600 text-white btn btn-active"
+                >
+                  2
+                </button>
+                <button
+                  class="join-item bg-transparent border-gray-600 text-white btn"
+                >
+                  3
+                </button>
+                <button
+                  class="join-item bg-transparent border-gray-600 text-white btn"
+                >
+                  4
+                </button>
+                <button
+                  class="join-item bg-transparent border-gray-600 text-white btn"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+            <!-- End Button Pagination -->
+          </div>
+        </div>
+      </main>
+      <!-- End Content -->
+    </div>
+  </body>
+</html>
