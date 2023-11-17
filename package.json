@@ -41,6 +41,7 @@
     "chart.js": "^4.4.0",
     "ejs": "^3.1.9",
     "express-session": "^1.17.3",
+    "moment": "^2.29.4",
     "mysql2": "^3.6.3",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",

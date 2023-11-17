@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <%- include('../../layouts/head') -%>
+  <body class="bg-[#252429] text-[#dadcdd]">
+    <%- include('../../components/sidebar') -%>
+    <div class="pl-32">
+      <!-- Header -->
+      <%- include('../../components/header') -%>
+      <!-- End Header -->
+      <!-- Content -->
+      <main class="p-5 min-h-screen">
+        <section class="flex gap-5">
+          <!-- <div class="w-56 h-56 border border-gray-600 rounded-lg">
+            profile picture
+          </div> -->
+          <div class="flex-1 p-5 bg-[#2a292e] rounded-xl">
+            <form id="form-detail" action="" method="post">
+              <div class="grid grid-cols-3 gap-5">
+                <div class="flex flex-col gap-2">
+                  <label for="">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    class="p-2 rounded-xl bg-[#252429] text-[#dadcdd]"
+                    placeholder="Nama"
+                    value="<%= data.name %>"
+                    readonly
+                  />
+                </div>
+                <div class="flex flex-col gap-2">
+                  <label for="">Phone</label>
+                  <input
+                    name="phone"
+                    type="tel"
+                    class="p-2 rounded-xl bg-[#252429] text-[#dadcdd]"
+                    placeholder="Phone"
+                    value="<%= data.phone %>"
+                    readonly
+                  />
+                </div>
+                <div class="flex flex-col gap-2">
+                  <label for="">Address</label>
+                  <input
+                    type="text"
+                    name="address"
+                    class="p-2 rounded-xl bg-[#252429] text-[#dadcdd]"
+                    placeholder="Address"
+                    readonly
+                    value="<%= data.address %>"
+                  />
+                </div>
+                <div class="flex flex-row mx-2">
+                  <div class="flex flex-col">
+                    <button id="submit" type="submit" class="btn btn-primary text-white" disabled>Submit</button>
+                  </div>
+                  <div class="flex flex-col mx-2">
+                    <button id="cancel" type="button" class="btn bg-accent text-white" disabled>Cancel</button>
+                  </div>
+                </div>
+              </div>
+              <div class="py-2">
+                <button id="btn_edit" type="button" class="btn btn-primary bg-primary border-primary border-transparent text-white">Edit</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+      <!-- End Content -->
+    </div>
+    <%- include('../../layouts/script') -%>
+    <script>
+      $(function() {
+        $('#btn_edit').on('click', function(event) {
+          event.preventDefault();
+          const btn = $(this)
+          const name_field = $('input[name="name"]')
+          const phone_field = $('input[name="phone"]')
+          const address_field = $('input[name="address"]')
+          name_field.attr('readonly', false)
+          phone_field.attr('readonly', false)
+          address_field.attr('readonly', false)
+          $('#submit').attr('disabled', false)
+          $('#cancel').attr('disabled', false)
+        })
+        $('#cancel').on('click', function() {
+          const name_field = $('input[name="name"]')
+          const phone_field = $('input[name="phone"]')
+          const address_field = $('input[name="address"]')
+          name_field.attr('readonly', true)
+          phone_field.attr('readonly', true)
+          address_field.attr('readonly', true)
+          $('#submit').attr('disabled', true)
+          $('#cancel').attr('disabled', true)
+        })
+        $('#form-detail').on('submit', function(event) {
+          event.preventDefault();
+          let form = $(this).serializeArray()
+          const data = {};
+          form.forEach(function(d){
+            data[d.name] = d.value
+          })
+          $.ajax({
+            url: "/member/<%= data.id %>",
+            method: "PATCH",
+            type: "json",
+            data: data
+          })
+        })
+      });
+    </script>
+  </body>
+</html>

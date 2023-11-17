@@ -7,11 +7,6 @@ export class Member {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({
-    unique: true
-  })
-  code: string;
-
   @Column()
   name: string;
 
@@ -20,6 +15,9 @@ export class Member {
     default: null
   })
   phone: string;
+
+  @Column()
+  address: string;
 
   @CreateDateColumn()
   created_at: Date;
