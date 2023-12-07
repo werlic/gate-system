@@ -16,7 +16,7 @@ export class LoginController {
   @Render('pages/login/index')
   Login(@Req() req: Request, @Res() res: Response) {
     if (req.isAuthenticated()) {
-      return 
+      return res.redirect('/dashboard')
     }
     return { titlePage: 'Gate System', message: 'Hello world!' };
   }
