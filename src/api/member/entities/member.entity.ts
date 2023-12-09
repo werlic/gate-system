@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Membership } from 'src/api/membership/entities/membership.entity';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 
 @Entity({
   name: 'members'
@@ -24,4 +25,7 @@ export class Member {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @OneToMany(() => Membership, (membership) => membership.member)
+  memberships?: Membership[]
 }
