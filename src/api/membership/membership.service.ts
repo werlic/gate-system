@@ -91,7 +91,7 @@ export class MembershipService {
       where: { id: id }
     })
 
-    membership.member_id = null
+    membership.member_id = member_id
     await this.membershipRepository.save(membership)
     return new OkResponse({
       message: `This membership removed from member #${id}`,
