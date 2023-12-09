@@ -1,3 +1,4 @@
+import { compareSync } from 'bcrypt';
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity({
@@ -29,4 +30,8 @@ export class User {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  validate(password: string): boolean {
+    return compareSync(password, this.password)
+  }
 }

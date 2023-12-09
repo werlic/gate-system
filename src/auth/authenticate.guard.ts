@@ -1,55 +1,19 @@
 import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
-
-// @Injectable()
-// export class AuthenticateGuard implements CanActivate {
-//   canActivate(
-//     context: ExecutionContext,
-//   ): boolean | Promise<boolean> | Observable<boolean> {
-//     const request = context.switchToHttp().getRequest();
-//     const response = context.switchToHttp().getResponse();
-//     if (request.isAuthenticated()) {
-//       return true;
-//     }
-    
-//     return response.redirect('/login');
-//   }
-// }
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthenticateGuard implements CanActivate {
-  constructor(private readonly jwtService: JwtService) {}
-  async canActivate(context: ExecutionContext): Promise<boolean> {
+  canActivate(
+    context: ExecutionContext,
+  ): boolean | Promise<boolean> | Observable<boolean> {
     const request = context.switchToHttp().getRequest();
-    const token = this.extractTokenFromHeader(request);
-    if (!token) {
-      throw new UnauthorizedException();
+    const response = context.switchToHttp().getResponse();
+    if (request.isAuthenticated()) {
+      return true;
     }
-    try {
-      const payload = await this.jwtService.verifyAsync(
-        token,
-        {
-          secret: process.env.JWT_SECRET
-        }
-      );
-      // 💡 We're assigning the payload to the request object here
-      // so that we can access it in our route handlers
-      request['user'] = payload;
-    } catch {
-      throw new UnauthorizedException();
-    }
-    return true;
-  }
-
-  private extractTokenFromHeader(request: Request): string | undefined {
-    if (request.headers.authorization) {
-      const [type, token] = request.headers.authorization.split(' ') ?? [];
-      return type.trim().toLowerCase() === 'bearer' ? token?.trim() : undefined;
-    } else if (request.signedCookies) {
-      const token = request.signedCookies['client_token'] ?? undefined;
-      return token;
-    }
-    return undefined;
+    
+    return response.redirect('/login');
   }
 }

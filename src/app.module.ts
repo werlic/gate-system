@@ -13,6 +13,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AppController } from './app.controller';
 import { MemberModule } from './member/member.module';
+import { ApiModule } from './api/api.module';
 
 @Module({
   imports: [
@@ -20,12 +21,6 @@ import { MemberModule } from './member/member.module';
       isGlobal: true,
       envFilePath: ['.env', '.development.env', '.production.env']
     }),
-    UsersModule,
-    LoginModule,
-    DashboardModule,
-    RegisterModule,
-    StatisticModule,
-    IncomeModule,
     TypeOrmModule.forRootAsync({
       useFactory(configService: ConfigService) {
         return {
@@ -53,7 +48,14 @@ import { MemberModule } from './member/member.module';
         expiresIn: process.env.JWT_EXPIRATION
       }
     }),
-    MemberModule
+    // UsersModule,
+    // LoginModule,
+    // DashboardModule,
+    // RegisterModule,
+    // StatisticModule,
+    // IncomeModule,
+    // MemberModule,
+    ApiModule
   ],
   controllers: [AppController],
   providers: [],
